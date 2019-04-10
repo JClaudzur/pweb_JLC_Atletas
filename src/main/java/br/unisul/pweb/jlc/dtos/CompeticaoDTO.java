@@ -21,8 +21,6 @@ public class CompeticaoDTO implements Serializable{
 	public CompeticaoDTO() {
 		
 	}
-	
-	
 
 	public CompeticaoDTO(Competicao obj) {
 		cod = obj.getCod();

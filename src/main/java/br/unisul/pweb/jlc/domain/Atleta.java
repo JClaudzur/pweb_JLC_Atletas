@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 
@@ -24,8 +26,20 @@ private static final long serialVersionUID = 1L;
 	private Integer cod;
 	private String nome;
 	
-	@ManyToMany(mappedBy= "atletas")
-	private List<Competicao> Comp = new ArrayList<>();
+	
+	
+	/*
+	 * 
+	 * Adicionando o algoritimo acima sera possivel fazer a conexao das tabelas, criando assim uma tabela de relação.
+	 * Lembrando que o nome da lista declarada logo abaixo deve estar com o mesmo nome na classe Competicao.
+	 */
+	
+	@ManyToMany
+	@JoinTable(name = "ATLETA_COMPETICAO",
+		joinColumns = @JoinColumn(name = "atleta_id"),
+		inverseJoinColumns = @JoinColumn(name = "competicao_id")
+	)
+	private List<Competicao> competicao = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="MODALIDADES")
@@ -42,6 +56,21 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	
+	public List<Competicao> getCompeticao() {
+		return competicao;
+	}
+
+	public void setCompeticao(List<Competicao> competicao) {
+		this.competicao = competicao;
+	}
+
+	public Set<String> getModalidades() {
+		return modalidades;
+	}
+
+	public void setModalidades(Set<String> modalidades) {
+		this.modalidades = modalidades;
+	}
 
 	@Override
 	public int hashCode() {
@@ -66,16 +95,6 @@ private static final long serialVersionUID = 1L;
 		} else if (!cod.equals(other.cod))
 			return false;
 		return true;
-	}
-
-	
-
-	public Set<String> getModalidades() {
-		return modalidades;
-	}
-
-	public void setModalidades(Set<String> modalidades) {
-		this.modalidades = modalidades;
 	}
 
 	public Integer getCod() {

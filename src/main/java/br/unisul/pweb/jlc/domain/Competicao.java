@@ -22,18 +22,19 @@ public class Competicao implements Serializable{
 	private String descricao;
 	private String data;
 	
-	@ManyToMany(mappedBy= "competicoes")
-	private List<Atleta> Atletas = new ArrayList<>();
+	@ManyToMany(mappedBy= "competicao")
+	private List<Atleta> atletas = new ArrayList<>();
 	
 	public Competicao() {
 		
 		
 	}
 	
-	public Competicao(Integer cod, String nome) {
+	public Competicao(Integer cod, String nome, String data) {
 		super();
 		this.cod = cod;
 		this.descricao = nome;
+		this.data = data;
 	}
 
 	@Override
@@ -90,11 +91,11 @@ public class Competicao implements Serializable{
 	}
 
 	public List<Atleta> getAtletas() {
-		return Atletas;
+		return atletas;
 	}
 
-	public void setAtletas(List<Atleta> atletas) {
-		Atletas = atletas;
+	public void setAtletas(List<Atleta> atleta) {
+		atletas = atleta;
 	}
 		
 	

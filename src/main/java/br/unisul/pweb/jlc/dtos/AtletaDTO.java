@@ -20,9 +20,7 @@ public class AtletaDTO implements Serializable{
 	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
 	
-	private String modalidade1;
-	private String modalidade2;
-	private String modalidade3;
+	private String modalidade;
 	
 	
 	public AtletaDTO(Atleta a) {
@@ -67,24 +65,13 @@ public class AtletaDTO implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getModalidade1() {
-		return modalidade1;
+	public String getModalidade() {
+		return modalidade;
 	}
-	public void setModalidade1(String modalidade1) {
-		this.modalidade1 = modalidade1;
+	public void setModalidade(String modalidade) {
+		this.modalidade = modalidade;
 	}
-	public String getModalidade2() {
-		return modalidade2;
-	}
-	public void setModalidade2(String modalidade2) {
-		this.modalidade2 = modalidade2;
-	}
-	public String getModalidade3() {
-		return modalidade3;
-	}
-	public void setModalidade3(String modalidade3) {
-		this.modalidade3 = modalidade3;
-	}
+	
 	
 	
 	
